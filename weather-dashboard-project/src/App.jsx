@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useEffect } from 'react';
 import ErrorMessage from "./components/ErrorMessage";
 import SearchBar from './components/SearchBar';
 import WeatherCard from './components/WeatherCard';
-
+import { fetchWeatherData } from './services/WeatherService';
 
 function App() {
+
   const[weatherData, setWeatherData] = useState(null);
   const[error, setError] = useState(null);
   const[isLoading, setIsLoading] = useState(false)
