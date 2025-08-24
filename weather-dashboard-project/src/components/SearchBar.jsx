@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Search as SearchIcon } from 'lucide-react';
 
 function SearchBar({onSearch}){
     const[input, setInput] = useState("");

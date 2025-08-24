@@ -21,7 +21,7 @@ const apiKey = import.meta.env.VITE_OPENWEATHER_KEY;
         description: data.weather[0].description,
         icon: data.weather[0].icon,
         humidity: data.main.humidity,
-        windspeed: data.wind.speed,
+        windSpeed: data.wind.speed,
 
     };
     
