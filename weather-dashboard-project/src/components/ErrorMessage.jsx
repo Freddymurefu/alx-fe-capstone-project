@@ -1,8 +1,9 @@
-import { useState } from 'react';
 
-function ErrorMessage(){
+function ErrorMessage({message}){
     return(
-        <h1></h1>
+        <div className="text-red-500 font-semibold p-2">
+         {message}
+        </div>
     )
 };
 
