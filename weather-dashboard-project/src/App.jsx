@@ -4,6 +4,7 @@ import ErrorMessage from "./components/ErrorMessage";
 import SearchBar from './components/SearchBar';
 import WeatherCard from './components/WeatherCard';
 import { fetchWeatherData } from './services/WeatherService';
+import LoadingSpinner from './components/LoadingSpinner';
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
     <>
       <div className='text-3xl font-bold underline text-blue-600'>
         {error && <ErrorMessage message={error} />}
+        {isLoading && <LoadingSpinner />}
         < SearchBar onSearch={handleSearch} />
         {weatherData && (
         <WeatherCard
