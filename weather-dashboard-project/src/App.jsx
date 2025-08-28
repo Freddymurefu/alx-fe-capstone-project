@@ -39,13 +39,12 @@ function App() {
         < SearchBar onSearch={handleSearch} />
         {weatherData && (
         <WeatherCard
-         city={weatherData.name}
-         country={weatherData.sys.country}
-         temperature={Math.round(weatherData.main.temp- 273.15)} //convert temp from Kelvin to Celsius then round off
-         description={weatherData.weather[0].description}
-         icon={weatherData.weather[0].icon}
-         humidity={weatherData.main.humidity}
-         windSpeed={Math.round(weatherData.wind.speed * 3.6).toFixed(1)} //convert windSpeed from m/s to km/h then round off
+         city={weatherData.city}
+         temperature={Math.round(weatherData.temperature)} 
+         description={weatherData.description}
+         icon={weatherData.icon}
+         humidity={weatherData.humidity}
+         windSpeed={weatherData.windSpeed || "N/A"} 
         />
       )}
       </div>

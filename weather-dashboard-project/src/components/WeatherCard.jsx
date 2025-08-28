@@ -1,11 +1,11 @@
 
-function WeatherCard({city, country, temperature, description, icon, humidity, windSpeed}){
+function WeatherCard({city, temperature, description, icon, humidity, windSpeed}){
 const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
 
     return(
         <div>
-            <h2>{city}, {country}</h2>
+            <h2>{city}</h2>
             <p>{temperature}°C</p>
             <p> {description} </p>
             <img src={iconUrl} alt={description}/>
