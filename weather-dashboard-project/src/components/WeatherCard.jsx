@@ -1,4 +1,5 @@
 import CityTime from "./CityTime";
+import CurrentWeather from "./CurrentWeather";
 
 function WeatherCard({city, temperature, description, icon, humidity, windSpeed}){
 const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
@@ -13,12 +14,14 @@ const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
         
         <div style={{ flex: 1, minWidth: 260 }}>
-          <h3>Current Weather</h3>
-          <p>{temperature}°C</p>
-          <p>{description}</p>
-          <img src={iconUrl} alt={description} />
-          <p>Humidity: {humidity}%</p>
-          <p>Wind: {windSpeed} km/h</p>
+          
+        <CurrentWeather
+            temperature={temperature}
+            description={description}
+            icon={icon}
+            humidity={humidity}
+            windSpeed={windSpeed}
+           />
         </div>
       </div>
 
