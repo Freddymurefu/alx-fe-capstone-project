@@ -33,7 +33,7 @@ function App() {
   
   return (
     <>
-      <div className='text-3xl font-bold underline text-blue-600'>
+      <div className='text-3xl font-bold text-gray-600'>
         {error && <ErrorMessage message={error} />}
         {isLoading && <LoadingSpinner />}
         < SearchBar onSearch={handleSearch} />
