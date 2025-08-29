@@ -1,9 +1,8 @@
 import CityTime from "./CityTime";
 import CurrentWeather from "./CurrentWeather";
-import 
-function WeatherCard({city, temperature, description, icon, humidity, windSpeed}){
-const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+import Forecast from "./Forecast";
 
+function WeatherCard({city, temperature, description, icon, humidity, windSpeed}){
 
     return (
     <div>
@@ -26,7 +25,7 @@ const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
       </div>
 
       <div style={{ marginTop: 16 }}>
-        <Forecast forecast5={[]} hourly={[]}/>
+        <Forecast forecast5={[]}/>
       </div>
     </div>
   );

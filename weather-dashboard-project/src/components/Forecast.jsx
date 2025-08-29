@@ -1,13 +1,13 @@
 //This is the wrapper for my bottom row
+import SevenDayForecast from "./SevenDayForecast";
 
-function Forecast({ forecast5 = [], hourly = [] }) {
+function Forecast({ forecast7 = [] }) {
   return (
     <div>
-      {/* Bottom Left: Five day forecast (placeholder for now) */}
+      {/* Bottom row: 7 day forecast (placeholder for now) */}
       <div>[FiveDayForecast will go here]</div>
 
-      {/*Bottom Right: Hourly forecast (placeholder for now) */}
-      <div>[HourlyForecast will go here]</div>
+
     </div>
   );
 }
