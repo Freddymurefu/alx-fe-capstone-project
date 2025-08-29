@@ -43,6 +43,7 @@ function App() {
         {isLoading && <LoadingSpinner />}
         < SearchBar onSearch={handleSearch} />
         {weatherData && (
+          <>
         <WeatherCard
          city={weatherData.city}
          temperature={Math.round(weatherData.temperature)} 
@@ -51,8 +52,16 @@ function App() {
          humidity={weatherData.humidity}
          windSpeed={weatherData.windSpeed || "N/A"}
         forecast5={forecast}
-        />
-      )}
+
+      />
+       
+      <button
+      onClick={()=> handleSearch(weatherData.city)}
+      >Refresh</button>
+
+
+      </>
+        )}
       </div>
 
    
