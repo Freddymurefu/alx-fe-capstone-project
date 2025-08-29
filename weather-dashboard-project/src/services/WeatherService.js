@@ -30,27 +30,33 @@ const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
     
 };
 
-//function to fetch 7 day weather forecast data
 
-export async function fetchForecast(lat, lon){
-    const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
-    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=${apiKey}`;
-    const response = await fetch(url);
+// function to fetch 5-day forecast data (free plan)
+export async function fetchForecast(city) {
+  const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+  const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
 
-    const data = await response.json();
+  const response = await fetch(url);
+  const data = await response.json();
 
-    if (!response.ok|| !data.daily ) {
-        throw new Error(data.message || "Failed to fetch weekly forecast");
-    }
-  return data.daily.slice(0, 7).map((dayData) => {
+  if (!response.ok) {
+    throw new Error(data.message || "Failed to fetch forecast");
+  }
+
+  // OpenWeather gives forecast in 3-hour intervals
+  // I'll reduce to 1 forecast per day (e.g. noon data)
+  const dailyData = data.list.filter((item) =>
+    item.dt_txt.includes("12:00:00")
+  );
+
+  return dailyData.map((dayData) => {
     const date = new Date(dayData.dt * 1000);
     const dayName = date.toLocaleDateString("en-US", { weekday: "short" });
 
-  return {
-    day: dayName,
-    temp: Math.round(dayData.temp.day),
-    icon: `https://openweathermap.org/img/wn/${dayData.weather[0].icon}.png`,
+    return {
+      day: dayName,
+      temp: Math.round(dayData.main.temp),
+      icon: dayData.weather[0].icon,
     };
   });
-
 }
