@@ -1,8 +1,8 @@
 
-function SevenDayForecast({ forecast }) {
+function FiveDayForecast({ forecast }) {
   return (
     <div>
-      <h3>7-Day Forecast</h3>
+      <h3>5-Day Forecast</h3>
       <ul style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
         {forecast.map((day, index) => (
           <li key={index} style={{ textAlign: "center" }}>
@@ -19,4 +19,4 @@ function SevenDayForecast({ forecast }) {
   );
 }
 
-export default SevenDayForecast;
+export default FiveDayForecast;

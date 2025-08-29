@@ -1,9 +1,9 @@
-import SevenDayForecast from "./SevenDayForecast";
+import FiveDayForecast from "./FiveDayForecast";
 
-function Forecast({ forecast7 = [] }) {
+function Forecast({ forecast5 = [] }) {
   return (
     <div>
-      <SevenDayForecast forecast={forecast7} />
+      <FiveDayForecast forecast={forecast5} />
     </div>
   );
 }

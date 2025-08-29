@@ -21,7 +21,7 @@ function App() {
     try {
       const data = await fetchWeatherData(city);
       setWeatherData(data);
-      const forecastData = await fetchForecast(data.lat, data.lon);
+      const forecastData = await fetchForecast(city);
       setForecast(forecastData);
       
       
@@ -50,7 +50,7 @@ function App() {
          icon={weatherData.icon}
          humidity={weatherData.humidity}
          windSpeed={weatherData.windSpeed || "N/A"}
-        forecast7={forecast}
+        forecast5={forecast}
         />
       )}
       </div>
