@@ -6,12 +6,12 @@ function SevenDayForecast({ forecast }) {
       <ul style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
         {forecast.map((day, index) => (
           <li key={index} style={{ textAlign: "center" }}>
-            <p>{day.weekday}</p>
+            <p>{day.day}</p>
             <img
               src={`https://openweathermap.org/img/wn/${day.icon}@2x.png`}
-              alt={day.weekday}
+              alt={day.day}
             />
-            <p>{day.temperature}°C</p>
+            <p>{day.temp}°C</p>
           </li>
         ))}
       </ul>

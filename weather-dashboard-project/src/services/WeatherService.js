@@ -24,8 +24,8 @@ const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
         icon: data.weather?.[0]?.icon,
         humidity: data.main?.humidity,
         windSpeed: data.wind?.speed ? Math.round(data.wind.speed * 3.6).toFixed(1) : null,
-
-
+        lat: data.coord.lat,
+        lon: data.coord.lon,
     };
     
 };
@@ -39,18 +39,18 @@ export async function fetchForecast(lat, lon){
 
     const data = await response.json();
 
-    if (!response.ok) {
-        throw new Error("Failed to fetch weekly forecast");
+    if (!response.ok|| !data.daily ) {
+        throw new Error(data.message || "Failed to fetch weekly forecast");
     }
-return(
-    data.daily.slice(0,7).map((day)=>({
-    weekday: new Date(day.dt * 1000).toLocaleDateString("en-US", { weekday: "short" }),
-    temperature: Math.round(day.temp.day),
-    icon: day.weather[0].icon,
+  return data.daily.slice(0, 7).map((dayData) => {
+    const date = new Date(dayData.dt * 1000);
+    const dayName = date.toLocaleDateString("en-US", { weekday: "short" });
 
-    })
-    
-    )
-)
+  return {
+    day: dayName,
+    temp: Math.round(dayData.temp.day),
+    icon: `https://openweathermap.org/img/wn/${dayData.weather[0].icon}.png`,
+    };
+  });
 
 }
