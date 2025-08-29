@@ -13,10 +13,13 @@ function App() {
   const[error, setError] = useState(null);
   const[isLoading, setIsLoading] = useState(false)
   const [forecast, setForecast] = useState([])
+  const [previousCity, setPreviousCity] = useState(null);
+  const REFRESH_MS = 5 * 60 * 1000; //Set to 5 minutes to prevent exhaustion of free API call limit
  
   const handleSearch = async(city) => {
     setError(null);
     setIsLoading(true);
+    setPreviousCity(city) //Keep the city the user searched for
     
     try {
       const data = await fetchWeatherData(city);
@@ -35,6 +38,17 @@ function App() {
 
 
   };
+useEffect(()=>{
+  if(!previousCity) return; //if theres no city yet, dont even start
+
+  const id = setInterval(() => {
+    if(!isLoading){
+      handleSearch(previousCity);
+    }
+  }, REFRESH_MS);
+
+return ()=> clearInterval(id);
+}, [previousCity, isLoading]);
   
   return (
     <>
