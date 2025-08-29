@@ -5,12 +5,14 @@ import SearchBar from './components/SearchBar';
 import WeatherCard from './components/WeatherCard';
 import { fetchWeatherData } from './services/WeatherService';
 import LoadingSpinner from './components/LoadingSpinner';
+import { fetchForecast } from './services/WeatherService';
 
 function App() {
 
   const[weatherData, setWeatherData] = useState(null);
   const[error, setError] = useState(null);
   const[isLoading, setIsLoading] = useState(false)
+  const [forecast, setForecast] = useState([])
  
   const handleSearch = async(city) => {
     setError(null);
@@ -19,11 +21,14 @@ function App() {
     try {
       const data = await fetchWeatherData(city);
       setWeatherData(data);
+      const forecastData = await fetchForecast(data.lat, data.lon);
+      setForecast(forecastData);
       
       
     } catch (error) {
       setError(error.message);
       setWeatherData(null);
+      setForecast([])
     }finally{
       setIsLoading(false);
     };
@@ -44,7 +49,8 @@ function App() {
          description={weatherData.description}
          icon={weatherData.icon}
          humidity={weatherData.humidity}
-         windSpeed={weatherData.windSpeed || "N/A"} 
+         windSpeed={weatherData.windSpeed || "N/A"}
+        forecast7={forecast}
         />
       )}
       </div>

@@ -10,7 +10,6 @@ const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
 
     const data = await response.json();      //Convert raw response into JSON
-    console.log("API response:", data)
     //if city is nonexistent or API doesn't work, throw an error
     if(!response.ok || data.cod !== 200){
         throw new Error(data.message || "City not found");
@@ -30,3 +29,28 @@ const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
     };
     
 };
+
+//function to fetch 7 day weather forecast data
+
+export async function fetchForecast(lat, lon){
+    const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=metric&appid=${apiKey}`;
+    const response = await fetch(url);
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error("Failed to fetch weekly forecast");
+    }
+return(
+    data.daily.slice(0,7).map((day)=>({
+    weekday: new Date(day.dt * 1000).toLocaleDateString("en-US", { weekday: "short" }),
+    temperature: Math.round(day.temp.day),
+    icon: day.weather[0].icon,
+
+    })
+    
+    )
+)
+
+}

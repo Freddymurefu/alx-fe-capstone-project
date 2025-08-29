@@ -2,7 +2,7 @@ import CityTime from "./CityTime";
 import CurrentWeather from "./CurrentWeather";
 import Forecast from "./Forecast";
 
-function WeatherCard({city, temperature, description, icon, humidity, windSpeed}){
+function WeatherCard({city, temperature, description, icon, humidity, windSpeed, forecast7}){
 
     return (
     <div>
@@ -25,7 +25,7 @@ function WeatherCard({city, temperature, description, icon, humidity, windSpeed}
       </div>
 
       <div style={{ marginTop: 16 }}>
-        <Forecast forecast5={[]}/>
+        <Forecast forecast7={forecast7}/>
       </div>
     </div>
   );
