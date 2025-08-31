@@ -6,6 +6,9 @@ import WeatherCard from './components/WeatherCard';
 import { fetchWeatherData } from './services/WeatherService';
 import LoadingSpinner from './components/LoadingSpinner';
 import { fetchForecast } from './services/WeatherService';
+import CityTime from './components/CityTime';
+import FiveDayForecast from './components/FiveDayForecast';
+import Forecast from './components/Forecast';
 
 function App() {
 
@@ -51,35 +54,41 @@ return ()=> clearInterval(id);
 }, [previousCity, isLoading]);
   
   return (
-    <>
-      <div className='text-3xl font-bold text-gray-600'>
+    <div className='min-h-screen bg-gradient-to-br from-slate-100 to-blue-200'>
+      <div className='max-w-6xl mx-auto px-4 py-6 space-y-6'>
+                < SearchBar onSearch={handleSearch} />
+
+        <div className='mt-4 space-y-4'>
         {error && <ErrorMessage message={error} />}
         {isLoading && <LoadingSpinner />}
-        < SearchBar onSearch={handleSearch} />
+        
+
         {weatherData && (
-          <>
+          <div className='bg-white/80 backdrop-blur rounded-2xl shadow-lg p-6 sm:p-8 max-w-md mx-auto'>
+        <CityTime city={weatherData.city} />
         <WeatherCard
-         city={weatherData.city}
          temperature={Math.round(weatherData.temperature)} 
          description={weatherData.description}
          icon={weatherData.icon}
          humidity={weatherData.humidity}
          windSpeed={weatherData.windSpeed || "N/A"}
-        forecast5={forecast}
-
-      />
-       
+        />
+        <div>
+       <Forecast forecast5={forecast} />
+         </div>
       <button
       onClick={()=> handleSearch(weatherData.city)}
       >Refresh</button>
 
 
-      </>
+      </div>
+      
         )}
+        </div>
       </div>
 
    
-    </>
+    </div>
   )
 }
 
