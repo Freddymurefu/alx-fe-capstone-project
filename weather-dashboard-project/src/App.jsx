@@ -65,7 +65,9 @@ return ()=> clearInterval(id);
 
         {weatherData && (
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className='py-4'>
     <CityTime city={weatherData.city} />
+    </div>
 
     <div className="md:col-span-2">
       <WeatherCard
@@ -81,7 +83,11 @@ return ()=> clearInterval(id);
       <Forecast forecast5={forecast} />
     </div>
 
-    <div className="bg-blue-300 text-white w-24 rounded-lg p-2 text-center cursor-pointer hover:bg-blue-400 transition">
+    <div className="fixed bottom-6 right-6
+             px-5 py-3 rounded-full
+             bg-blue-500 text-white font-semibold
+             shadow-lg hover:bg-blue-600
+             active:scale-95 transition">
       <button onClick={() => handleSearch(weatherData.city)}>
         Refresh
       </button>

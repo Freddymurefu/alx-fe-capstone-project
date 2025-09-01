@@ -7,9 +7,6 @@ function WeatherCard({city, temperature, description, icon, humidity, windSpeed,
     return (
     <div>
       <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-        <div style={{ flex: 1, minWidth: 260 }}>
-          <CityTime city={city} />
-        </div>
 
         
         <div style={{ flex: 1, minWidth: 260 }}>
