@@ -6,9 +6,8 @@ import { fetchWeatherData } from './services/WeatherService';
 import LoadingSpinner from './components/LoadingSpinner';
 import { fetchForecast } from './services/WeatherService';
 import CityTime from './components/CityTime';
-import FiveDayForecast from './components/FiveDayForecast';
 import Forecast from './components/Forecast';
-import CityImage from './components/CityImage';
+import CityImage, { mapDescriptionToCondition } from './components/CityImage';
 
 function App() {
 
@@ -64,10 +63,11 @@ return ()=> clearInterval(id);
         
 
         {weatherData && (
+          
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
     <div className='py-4'>
     <CityTime city={weatherData.city} />
-    <CityImage condition={mapDescriptionToCondition(description)} /> 
+    <CityImage condition={mapDescriptionToCondition(weatherData.description)} /> 
     </div>
 
     <div className="md:col-span-2">
