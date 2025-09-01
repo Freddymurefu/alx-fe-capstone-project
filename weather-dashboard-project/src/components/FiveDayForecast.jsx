@@ -2,7 +2,7 @@
 function FiveDayForecast({ forecast }) {
   return (
     <div className="bg-white-100 p-4 sm:p-6 rounded-2xl shadow-lg max-w-5xl ml-0 mr-auto">
-    <h3 className="text-lg sm:text-xl font-semibold text-gray-700 mb-4 text-center">5-day Weather Forecast</h3>
+    <h3 className="text-lg sm:text-xl font-semibold text-gray-700 mb-4 text-center">What to expect over the next 5 days</h3>
 
       <ul className="grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
         {forecast.map((day, index) => (
