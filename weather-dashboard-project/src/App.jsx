@@ -67,7 +67,7 @@ return ()=> clearInterval(id);
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
     <div className='py-4'>
     <CityTime city={weatherData.city} />
-    <CityImage />
+    <CityImage condition={mapDescriptionToCondition(description)} /> 
     </div>
 
     <div className="md:col-span-2">
