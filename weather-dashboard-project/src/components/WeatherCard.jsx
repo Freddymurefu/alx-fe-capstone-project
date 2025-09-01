@@ -21,9 +21,7 @@ function WeatherCard({city, temperature, description, icon, humidity, windSpeed,
         </div>
       </div>
 
-      <div style={{ marginTop: 16 }}>
-        <Forecast forecast5={forecast5}/>
-      </div>
+
     </div>
   );
 }
