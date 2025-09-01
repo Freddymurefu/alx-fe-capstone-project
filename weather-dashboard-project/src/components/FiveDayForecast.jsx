@@ -1,13 +1,13 @@
 
 function FiveDayForecast({ forecast }) {
   return (
-    <div className="bg-gray-100 p-5 rounded-xl shadow-md max-w-xl mx-auto">
-                   <h3>5-day Weather Forecast</h3>
+    <div className="bg-white-100 p-6 rounded-2xl shadow-lg max-w-4xl mr-2 mx-auto">
+    <h3 className="text-xl font-semibold text-gray-700 mb-4 text-center">5-day Weather Forecast</h3>
 
-      <ul className=" flex flex-wrap justify-between gap-3">
+      <ul className="flex flex-wrap justify-between gap-3">
         {forecast.map((day, index) => (
           <li className="flex flex-col items-center bg-gradient-to-br from-blue-50 to-blue-100 
-             p-3 rounded-lg shadow-sm hover:shadow-md hover:-translate-y-1 transition-transform duration-300"        
+             p-4 rounded-xl shadow-md hover:shadow-md hover:-translate-y-1 transition-transform duration-300"        
           key={index} style={{ textAlign: "center" }}>
             <p className="font-medium">{day.day}</p>
             <img
