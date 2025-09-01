@@ -64,32 +64,35 @@ return ()=> clearInterval(id);
         
 
         {weatherData && (
-          <div className='bg-white/80 backdrop-blur rounded-2xl shadow-lg p-6 sm:p-8 max-w-md mx-auto'>
-        <CityTime city={weatherData.city} />
-        <WeatherCard
-         temperature={Math.round(weatherData.temperature)} 
-         description={weatherData.description}
-         icon={weatherData.icon}
-         humidity={weatherData.humidity}
-         windSpeed={weatherData.windSpeed || "N/A"}
-        />
-        <div>
-       <Forecast forecast5={forecast} />
-         </div>
-      <button
-      onClick={()=> handleSearch(weatherData.city)}
-      >Refresh</button>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <CityTime city={weatherData.city} />
 
+    <div className="md:col-span-2">
+      <WeatherCard
+        temperature={Math.round(weatherData.temperature)} 
+        description={weatherData.description}
+        icon={weatherData.icon}
+        humidity={weatherData.humidity}
+        windSpeed={weatherData.windSpeed || "N/A"}
+      />
+    </div>
 
-      </div>
-      
-        )}
+    <div className="md:col-span-3">
+      <Forecast forecast5={forecast} />
+    </div>
+
+    <div className="bg-blue-300 text-white w-24 rounded-lg p-2 text-center cursor-pointer hover:bg-blue-400 transition">
+      <button onClick={() => handleSearch(weatherData.city)}>
+        Refresh
+      </button>
+    </div>
+  </div>
+)}
         </div>
       </div>
 
    
     </div>
-  )
-}
+  )};
 
 export default App;
