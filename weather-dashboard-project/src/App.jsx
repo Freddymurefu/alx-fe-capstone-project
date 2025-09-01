@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ErrorMessage from "./components/ErrorMessage";
 import SearchBar from './components/SearchBar';
 import WeatherCard from './components/WeatherCard';
@@ -9,6 +8,7 @@ import { fetchForecast } from './services/WeatherService';
 import CityTime from './components/CityTime';
 import FiveDayForecast from './components/FiveDayForecast';
 import Forecast from './components/Forecast';
+import CityImage from './components/CityImage';
 
 function App() {
 
@@ -67,6 +67,7 @@ return ()=> clearInterval(id);
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
     <div className='py-4'>
     <CityTime city={weatherData.city} />
+    <CityImage />
     </div>
 
     <div className="md:col-span-2">
