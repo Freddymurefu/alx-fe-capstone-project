@@ -17,12 +17,14 @@ function App() {
   const[isLoading, setIsLoading] = useState(false)
   const [forecast, setForecast] = useState([])
   const [previousCity, setPreviousCity] = useState(null);
+  const [searchOccurs, setSearchOccurs] = useState(false)
   const REFRESH_MS = 5 * 60 * 1000; //Set to 5 minutes to prevent exhaustion of free API call limit
  
   const handleSearch = async(city) => {
     setError(null);
     setIsLoading(true);
     setPreviousCity(city) //Keep the city the user searched for
+    setSearchOccurs(true) //Disappear popular cities button after search
     
     try {
       const data = await fetchWeatherData(city);
@@ -57,7 +59,7 @@ return ()=> clearInterval(id);
     <div className='min-h-screen bg-gradient-to-br from-slate-100 to-blue-200'>
       <div className='max-w-6xl mx-auto px-4 py-6 space-y-6'>
                 < SearchBar onSearch={handleSearch} />
-                <PopularCities onCityClick={handleSearch} />
+                {!searchOccurs && <PopularCities onCityClick={handleSearch} />}
 
         <div className='mt-4 space-y-4'>
         {error && <ErrorMessage message={error} />}
