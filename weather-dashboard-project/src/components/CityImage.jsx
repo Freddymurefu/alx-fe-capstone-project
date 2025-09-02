@@ -33,11 +33,11 @@ const images = {
 export default function CityImage({condition}){
     const imageSrc = images[condition] || clearImg;
     return(
-        <div className="w-full sm:w-64 md:w-74 rounded-2xl bg-white/80 backdrop-blur ring-1 ring-slate-200  flex justify-center">
+        <div className="w-full sm:w-64 md:w-72 rounded-2xl bg-white/80 backdrop-blur ring-1 ring-slate-200">
             <img
             src={imageSrc}
             alt={condition}   
-            className="w-full h-auto max-h-60 object-cover rounded-xl"
+            className="w-full h-auto lg:max-h-60 md:max-h-72 lg:max-h-80 object-cover rounded-xl"
        
             />
 
