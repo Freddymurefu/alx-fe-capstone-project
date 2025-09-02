@@ -8,6 +8,7 @@ import { fetchForecast } from './services/WeatherService';
 import CityTime from './components/CityTime';
 import Forecast from './components/Forecast';
 import CityImage, { mapDescriptionToCondition } from './components/CityImage';
+import PopularCities from './components/PopularCities';
 
 function App() {
 
@@ -56,6 +57,7 @@ return ()=> clearInterval(id);
     <div className='min-h-screen bg-gradient-to-br from-slate-100 to-blue-200'>
       <div className='max-w-6xl mx-auto px-4 py-6 space-y-6'>
                 < SearchBar onSearch={handleSearch} />
+                <PopularCities onCityClick={handleSearch} />
 
         <div className='mt-4 space-y-4'>
         {error && <ErrorMessage message={error} />}
